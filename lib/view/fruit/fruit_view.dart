@@ -5,6 +5,7 @@ import 'package:app/view/fruit/fruit_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../components/appbar.dart';
 import '../../components/card.dart';
 
 class FruitView extends StatefulWidget {
@@ -19,21 +20,12 @@ class _FruitViewState extends State<FruitView> {
 
   @override
   Widget build(BuildContext context) {
-    print(model.fruitList[0].name);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         titleSpacing: 0,
-        title: Padding(
-          padding: PaddingConstant.instance.paddingNormal,
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(model.menuName),
-                SvgPicture.asset(model.userName)
-              ]),
-        ),
+        title: buildAppBarIcon(state: "Home"),
       ),
       body: SafeArea(
         child: Padding(

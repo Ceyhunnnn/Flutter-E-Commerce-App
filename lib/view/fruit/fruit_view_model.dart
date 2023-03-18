@@ -45,7 +45,4 @@ class FruitViewModel {
         price: 2.99,
         photo: "assets/images/pottato.png")
   ];
-
-  String menuName = "assets/images/menu.svg";
-  String userName = "assets/images/user.svg";
 }
