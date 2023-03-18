@@ -5,6 +5,8 @@ import 'package:app/view/fruit/fruit_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../components/card.dart';
+
 class FruitView extends StatefulWidget {
   const FruitView({super.key});
 
@@ -54,92 +56,13 @@ class _FruitViewState extends State<FruitView> {
                             const SliverGridDelegateWithMaxCrossAxisExtent(
                                 maxCrossAxisExtent: 200,
                                 mainAxisExtent: 220,
-                                crossAxisSpacing: 10,
+                                crossAxisSpacing: 30,
                                 mainAxisSpacing: 20),
                         itemCount: model.fruitList.length,
                         itemBuilder: (BuildContext ctx, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: borderColor,
-                                style: BorderStyle.solid,
-                                width: 1.0,
-                              ),
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(model.fruitList[index].photo),
-                                Padding(
-                                  padding: PaddingConstant
-                                      .instance.paddingNormalHorizontal,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        model.fruitList[index].name,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15),
-                                      ),
-                                      SizedBox(
-                                        height: context.dynamicHeight(0.005),
-                                      ),
-                                      Text(
-                                        model.fruitList[index].desc,
-                                        style: TextStyle(
-                                            color: descTextColor, fontSize: 11),
-                                      ),
-                                      SizedBox(
-                                        height: context.dynamicHeight(0.03),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "₺" +
-                                                model.fruitList[index].price
-                                                    .toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Container(
-                                            width: 36,
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                color: green,
-                                                style: BorderStyle.solid,
-                                                width: 1.0,
-                                              ),
-                                              color: green,
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Center(
-                                                child: Text(
-                                                  "+",
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                          return buildFruitCard(
+                            model: model,
+                            index: index,
                           );
                         }),
                   ),
