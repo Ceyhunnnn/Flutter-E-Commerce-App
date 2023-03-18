@@ -1,4 +1,4 @@
-import 'package:app/view/main/main_view.dart';
+import 'package:app/view/fruit/fruit_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter E-Commerce App',
-      home: MainView(),
+      home: FruitView(),
     );
   }
 }
