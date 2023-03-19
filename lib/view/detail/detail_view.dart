@@ -16,9 +16,11 @@ class DetailView extends StatefulWidget {
 }
 
 class _DetailViewState extends State<DetailView> {
+  var number = 0;
   @override
   Widget build(BuildContext context) {
     // print(widget.fruitDetailList.name);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -42,7 +44,77 @@ class _DetailViewState extends State<DetailView> {
               SizedBox(
                 height: context.dynamicWidth(0.05),
               ),
-              buildProductAbout(widget: widget)
+              buildProductAbout(widget: widget),
+              SizedBox(
+                height: context.dynamicWidth(0.1),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '₺${widget.fruitDetailList.price}',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(color: descTextColor, spreadRadius: 1),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5.0, horizontal: 15),
+                      child: Row(
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                if (number <= 0) {
+                                  return;
+                                }
+                                setState(() {
+                                  number--;
+                                });
+                              },
+                              child: Text("-")),
+                          SizedBox(
+                            width: context.dynamicWidth(0.03),
+                          ),
+                          Text(
+                            "${number}",
+                          ),
+                          SizedBox(
+                            width: context.dynamicWidth(0.03),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                number++;
+                              });
+                            },
+                            child: Text("+"),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        shadowColor: Colors.grey,
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        "Buy now",
+                        style: TextStyle(color: Colors.white),
+                      ))
+                ],
+              ),
+              Divider()
             ],
           ),
         ),
