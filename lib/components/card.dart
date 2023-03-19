@@ -32,8 +32,12 @@ class buildFruitCard extends StatelessWidget {
         children: [
           InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DetailView()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailView(
+                              fruitDetailList: model.fruitList[index],
+                            )));
               },
               child: Image.asset(model.fruitList[index].photo)),
           Padding(

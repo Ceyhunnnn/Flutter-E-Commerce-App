@@ -18,8 +18,22 @@ class buildAppBarIcon extends StatelessWidget {
     return Padding(
       padding: PaddingConstant.instance.paddingNormal,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        state == "Home" ? SvgPicture.asset(menuName) : Image.asset(backIcon),
-        SvgPicture.asset(userName),
+        state == "Home"
+            ? SvgPicture.asset(
+                menuName,
+                color: Colors.black,
+              )
+            : InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Image.asset(
+                  backIcon,
+                  color: Colors.black,
+                ),
+              ),
+        SvgPicture.asset(
+          userName,
+          color: Colors.black,
+        ),
       ]),
     );
   }
